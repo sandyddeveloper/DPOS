@@ -1,11 +1,189 @@
-PyQt6
-pyperclip
-Whoosh
-pytesseract
-psutil
-docker
-watchdog
-keyboard
-requests
-SQLAlchemy
-Alembic
+# ============================================================
+# DPOS — Desktop Personal OS
+# requirements.txt  (production)
+# Install: pip install -r requirements.txt
+# ============================================================
+
+
+# ------------------------------------------------------------
+# UI — PyQt6 desktop framework
+# ------------------------------------------------------------
+PyQt6==6.7.1
+PyQt6-Qt6==6.7.1
+PyQt6-sip==13.6.0
+PyQt6-WebEngine==6.7.0          # embedded browser (optional panels)
+
+
+# ------------------------------------------------------------
+# Database — SQLite ORM + migrations
+# ------------------------------------------------------------
+SQLAlchemy==2.0.36
+alembic==1.13.3
+
+
+# ------------------------------------------------------------
+# Full-text search
+# ------------------------------------------------------------
+Whoosh==2.7.4                   # pure-Python FTS, no binary deps
+
+
+# ------------------------------------------------------------
+# Clipboard
+# ------------------------------------------------------------
+pyperclip==1.9.0
+
+
+# ------------------------------------------------------------
+# Global hotkeys + keyboard hooks
+# ------------------------------------------------------------
+keyboard==0.13.5
+
+
+# ------------------------------------------------------------
+# File system watching (screenshots, project files, git)
+# ------------------------------------------------------------
+watchdog==5.0.3
+
+
+# ------------------------------------------------------------
+# System monitoring
+# ------------------------------------------------------------
+psutil==6.1.0
+
+
+# ------------------------------------------------------------
+# Docker integration
+# ------------------------------------------------------------
+docker==7.1.0
+
+
+# ------------------------------------------------------------
+# Screenshot OCR — text extraction from images
+# ------------------------------------------------------------
+Pillow==11.0.0
+pytesseract==0.3.13
+# NOTE: also install Tesseract binary on your OS:
+#   Windows : https://github.com/UB-Mannheim/tesseract/wiki
+#   macOS   : brew install tesseract
+#   Linux   : sudo apt install tesseract-ocr
+
+
+# ------------------------------------------------------------
+# Local AI — Ollama client
+# ------------------------------------------------------------
+ollama==0.3.3                   # Ollama Python client
+llama-cpp-python==0.3.2         # Embedded GGUF models (no Ollama needed)
+                                # GPU build: CMAKE_ARGS="-DLLAMA_CUDA=on" pip install llama-cpp-python
+
+
+# ------------------------------------------------------------
+# Vector search — AI memory similarity
+# ------------------------------------------------------------
+chromadb==0.5.18                # local vector DB, no server needed
+sentence-transformers==3.3.1    # embed text locally (all-MiniLM-L6-v2)
+
+
+# ------------------------------------------------------------
+# Task scheduling
+# ------------------------------------------------------------
+schedule==1.2.2
+
+
+# ------------------------------------------------------------
+# Git integration
+# ------------------------------------------------------------
+GitPython==3.1.43
+
+
+# ------------------------------------------------------------
+# Process / subprocess helpers
+# ------------------------------------------------------------
+psutil==6.1.0                   # (already listed above — ports, pids)
+pywin32==308; sys_platform == "win32"   # Windows process APIs
+
+
+# ------------------------------------------------------------
+# Configuration & environment
+# ------------------------------------------------------------
+python-dotenv==1.0.1
+dynaconf==3.2.6                 # layered config (env, toml, json)
+
+
+# ------------------------------------------------------------
+# Serialisation
+# ------------------------------------------------------------
+pydantic==2.9.2                 # data validation + settings models
+orjson==3.10.11                 # fast JSON (workspace configs, automations)
+
+
+# ------------------------------------------------------------
+# Logging
+# ------------------------------------------------------------
+loguru==0.7.2                   # structured logging with rotation
+
+
+# ------------------------------------------------------------
+# Date / time utilities
+# ------------------------------------------------------------
+arrow==1.3.0                    # human-friendly datetime handling
+python-dateutil==2.9.0
+
+
+# ------------------------------------------------------------
+# Text processing
+# ------------------------------------------------------------
+rich==13.9.4                    # pretty terminal output (CLI tools, debug)
+click==8.1.7                    # CLI entry points (dpos --status etc.)
+fuzzywuzzy==0.18.0              # fuzzy string matching for search
+python-Levenshtein==0.26.1      # speeds up fuzzywuzzy
+
+
+# ------------------------------------------------------------
+# HTTP client — AI API calls, webhook triggers
+# ------------------------------------------------------------
+httpx==0.27.2                   # async-capable HTTP
+requests==2.32.3                # simple sync HTTP
+
+
+# ------------------------------------------------------------
+# Async support
+# ------------------------------------------------------------
+anyio==4.6.2
+asyncio-compat==0.1.3
+
+
+# ------------------------------------------------------------
+# Notifications — OS-level desktop alerts
+# ------------------------------------------------------------
+plyer==2.1.0                    # cross-platform notifications
+win10toast==0.9; sys_platform == "win32"
+
+
+# ------------------------------------------------------------
+# Tray icon + platform helpers
+# ------------------------------------------------------------
+pystray==0.19.5                 # system tray (fallback if PyQt6 tray has issues)
+
+
+# ------------------------------------------------------------
+# Packaging / distribution (optional, for building .exe / .app)
+# ------------------------------------------------------------
+pyinstaller==6.11.1
+
+
+# ============================================================
+# requirements-dev.txt  (development only)
+# pip install -r requirements-dev.txt
+# ============================================================
+
+pytest==8.3.3
+pytest-qt==4.4.0                # PyQt6 widget testing
+pytest-cov==6.0.0
+pytest-asyncio==0.24.0
+pytest-mock==3.14.0
+black==24.10.0                  # code formatter
+ruff==0.7.4                     # linter (replaces flake8 + isort)
+mypy==1.13.0                    # static type checker
+pre-commit==4.0.1               # git hooks
+factory-boy==3.3.1              # test data factories
+freezegun==1.5.1                # freeze time in tests
