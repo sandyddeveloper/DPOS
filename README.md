@@ -1,14 +1,62 @@
-# DPOS — Desktop Personal OS
+# 🖥️ DPOS — Desktop Personal OS
 
-> **Marketing Motto:**  
-> *Your Desktop, Reimagined. A lightning-fast, AI-integrated Personal OS designed to consolidate search, automate workflows, and manage your cognitive load — keeping you in flow state, locally and securely.*
+<div align="center">
 
-> **Developer Motto:**  
-> *Build for speed, isolate for sanity. Every module a silent engine, every service a controlled thread, communicating via clean events to construct a unified, unbreakable user experience.*
+[![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
+[![UI Framework](https://img.shields.io/badge/UI-PyQt6-green.svg?style=for-the-badge&logo=qt&logoColor=white)](https://www.qt.io)
+[![Database](https://img.shields.io/badge/Database-SQLAlchemy%20%2B%20SQLite-orange.svg?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+</div>
 
 ---
 
-## Production Folder Structure
+### 🌟 Marketing Motto
+> **Your Desktop, Reimagined.**  
+> *A lightning-fast, AI-integrated Personal OS designed to consolidate your search, automate your workflows, and manage your cognitive load — keeping you in flow state, locally and securely.*
+
+### 🛠️ Developer Motto
+> **Build for speed, isolate for sanity.**  
+> *Every module a silent engine, every service a controlled thread, communicating via clean events to construct a unified, unbreakable user experience.*
+
+---
+
+## 🚀 Key Features
+
+*   🔍 **Universal Search** — Instantly scan and find your files, clipboard history, screen OCR text, or commands via a supercharged Whoosh query index.
+*   📋 **Smart Clipboard** — A background monitor categorizes text copies (SQL, URLs, security tokens, source code, text) to surface them right when you need them.
+*   📁 **Workspace Launcher** — Create and orchestrate custom template environments (like FastAPI, React/Node) with a single-click subprocess setup.
+*   ⚙️ **Automation Studio** — Record, playback, and schedule macro-sequences (cron-style) to automate repetitive desktop steps.
+*   🧠 **Developer Memory** — Hooks terminals, git tracking, and file edits into a local SQLite store so you can review what you did and recall details.
+*   📸 **Screenshot Intelligence** — Captures screenshots on the fly, runs PyTesseract OCR, and instantly indexes the extracted text into universal search.
+*   📊 **System Health Monitor** — Tracks CPU/RAM logs, threshold triggers, active ports, and container health status via docker-py.
+*   🤖 **Local AI** — Local Ollama API context assembly translates developer memory + search context into locally executable actions.
+
+---
+
+## 📐 Clean Architecture Guidelines
+
+To ensure DPOS remains stable, fast, and modular, developers must follow three strict architectural boundaries:
+
+### 1. Module Isolation
+*   Every folder in `modules/` is fully self-contained.
+*   Modules can import **only** from `core/` and `utils/`.
+*   They **never** import from the `ui/` layer or other modules. All cross-module communication goes through `core/events.py`.
+
+### 2. Service Layer
+*   `services/` is the single source for background thread executions.
+*   Modules expose plain, synchronous Python classes; background services wrap them in QThreads or system threads and register them in `service_manager.py`.
+
+### 3. UI → Module Boundary
+*   For **reads/queries** (fast, sync), UI widgets call module classes directly.
+*   For **writes/actions** (side effects, slow logic), UI emits a decoupled event via the `core/events.py` bus. The corresponding module listens and acts.
+
+---
+
+## 📂 Project Structure
+
+<details>
+<summary><b>🔍 Expand to view the Production Folder Tree</b></summary>
 
 ```
 dpos/
@@ -197,34 +245,43 @@ dpos/
         └── test_services.py
 ```
 
----
-
-## Key Design Rules
-
-### Module isolation
-Each folder in `modules/` is self-contained. It only imports from `core/` and `utils/`.
-It never imports from `ui/` or another module directly — communication goes through `core/events.py`.
-
-### Service layer
-`services/` are the only things that run background threads. Modules expose plain Python classes;
-services wrap them in threads and register with `service_manager.py`.
-
-### UI → Module boundary
-UI code calls module functions directly for reads (fast, sync).
-For writes and side effects, UI emits an event via `core/events.py` — the module listens and responds.
-
-### Data directory
-`data/` is gitignored. The app creates it on first run. Never hardcode paths — use `config.py`.
+</details>
 
 ---
 
-## Startup flow
+## ⚙️ Getting Started
 
+### Prerequisites
+- Python `3.10` or higher.
+- Tesseract OCR (for screenshot text scanning).
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sandyddeveloper/DPOS.git
+   cd DPOS
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   # Windows:
+   .venv\Scripts\activate
+   # Linux/macOS:
+   source .venv/bin/activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   # For development:
+   pip install -r requirements-dev.txt
+   ```
+
+### Running the App
+```bash
+python main.py
 ```
-main.py
-  └── app.py (App.__init__)
-        ├── core/database.py  →  create tables if not exist
-        ├── services/service_manager.py  →  start all background threads
-        ├── ui/app_window.py  →  build main window
-        └── ui/hotkeys.py  →  register Ctrl+Space global hook
-```
+
+---
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
