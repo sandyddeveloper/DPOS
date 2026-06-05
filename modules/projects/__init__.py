@@ -1,0 +1,3 @@
+"""
+Project dashboard module.
+"""

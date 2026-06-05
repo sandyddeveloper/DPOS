@@ -1,0 +1,3 @@
+"""
+Whoosh field schemas.
+"""

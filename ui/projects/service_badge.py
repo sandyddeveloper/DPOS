@@ -1,0 +1,3 @@
+"""
+Running/stopped service pill.
+"""

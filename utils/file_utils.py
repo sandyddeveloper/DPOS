@@ -1,0 +1,3 @@
+"""
+Path helpers, extension detection.
+"""

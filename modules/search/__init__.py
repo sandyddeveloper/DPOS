@@ -1,0 +1,3 @@
+"""
+Universal search module.
+"""

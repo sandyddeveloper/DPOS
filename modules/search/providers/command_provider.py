@@ -1,0 +1,3 @@
+"""
+Terminal commands search provider.
+"""

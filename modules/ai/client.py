@@ -1,0 +1,3 @@
+"""
+Ollama HTTP client wrapper.
+"""

@@ -1,0 +1,26 @@
+[project]
+name = "dpos"
+version = "0.1.0"
+description = "Desktop Personal OS"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyQt6",
+    "pyperclip",
+    "Whoosh",
+    "pytesseract",
+    "psutil",
+    "docker",
+    "watchdog",
+    "keyboard",
+    "requests",
+    "SQLAlchemy",
+    "Alembic",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "mypy",
+]

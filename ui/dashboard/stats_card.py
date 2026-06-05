@@ -1,0 +1,3 @@
+"""
+Reusable stat card component.
+"""

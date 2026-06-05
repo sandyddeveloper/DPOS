@@ -1,0 +1,3 @@
+"""
+Clip item component.
+"""

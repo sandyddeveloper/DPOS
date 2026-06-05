@@ -1,0 +1,3 @@
+"""
+watchdog — detect new screenshots.
+"""

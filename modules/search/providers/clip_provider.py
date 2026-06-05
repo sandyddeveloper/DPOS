@@ -1,0 +1,3 @@
+"""
+Clipboard history search provider.
+"""

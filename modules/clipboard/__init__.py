@@ -1,0 +1,3 @@
+"""
+Smart clipboard module.
+"""

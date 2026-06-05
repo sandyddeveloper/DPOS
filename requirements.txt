@@ -1,0 +1,11 @@
+PyQt6
+pyperclip
+Whoosh
+pytesseract
+psutil
+docker
+watchdog
+keyboard
+requests
+SQLAlchemy
+Alembic

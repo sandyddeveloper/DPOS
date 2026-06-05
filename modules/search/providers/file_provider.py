@@ -1,0 +1,3 @@
+"""
+Files + code search provider.
+"""

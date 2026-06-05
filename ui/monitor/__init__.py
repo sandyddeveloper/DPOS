@@ -1,0 +1,3 @@
+"""
+System monitor panel package.
+"""

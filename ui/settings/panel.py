@@ -1,0 +1,3 @@
+"""
+Settings panel QWidget.
+"""
