@@ -1,5 +1,10 @@
 {
   "name": "React Node",
   "description": "React Node project template",
-  "services": []
+  "services": [
+    {
+      "type": "command",
+      "command": "npm run dev"
+    }
+  ]
 }

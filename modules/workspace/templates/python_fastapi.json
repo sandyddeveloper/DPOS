@@ -1,5 +1,10 @@
 {
   "name": "Python FastAPI",
   "description": "Python FastAPI project template",
-  "services": []
+  "services": [
+    {
+      "type": "command",
+      "command": "uvicorn main:app --reload --port 8000"
+    }
+  ]
 }

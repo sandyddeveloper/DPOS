@@ -277,9 +277,23 @@ dpos/
    ```
 
 ### Running the App
+
+You can launch DPOS in one of two ways. Running either command will automatically initialize the database (and seed it with mock projects/tasks if run for the first time), start all background thread monitors, and display the PyQt6 frameless dashboard.
+
+#### Option 1: Direct Script Execution
 ```bash
 python main.py
 ```
+
+#### Option 2: Installed CLI Command
+1. Install the application in editable/development mode:
+   ```bash
+   pip install -e .
+   ```
+2. Execute the unified CLI command directly from any terminal session:
+   ```bash
+   dpos
+   ```
 
 ---
 

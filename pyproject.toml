@@ -24,3 +24,12 @@ dev = [
     "black",
     "mypy",
 ]
+
+[project.scripts]
+dpos = "main:main"
+
+[tool.setuptools]
+packages = ["core", "modules", "services", "ui", "utils"]
+py-modules = ["main", "app", "config"]
+
+
