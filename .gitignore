@@ -98,3 +98,12 @@ data/logs/*
 # User automation scripts
 modules/automation/scripts/*
 !modules/automation/scripts/.gitkeep
+
+# Node.js & Electron
+node_modules/
+dist-electron/
+
+# Application runtime index and scan details
+data/index/
+data/last_scan.txt
+

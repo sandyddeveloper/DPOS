@@ -1,0 +1,41 @@
+{
+  "name": "dpos",
+  "version": "1.0.0",
+  "description": "DPOS - Desktop Personal OS",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"c:\\Users\\SANTHU\\OneDrive\\Desktop\\Projects\\DPOS\\.venv\\Scripts\\python backend/backend_api.py\" \"npx electron . --dev\"",
+    "build-frontend": "npm --prefix frontend run build",
+    "compile-backend": "c:\\Users\\SANTHU\\OneDrive\\Desktop\\Projects\\DPOS\\.venv\\Scripts\\pyinstaller --clean --noconfirm --onedir --name dpos_backend --noconsole --add-data=assets;assets --add-data=backend/modules/workspace/templates;modules/workspace/templates backend/backend_api.py",
+    "package": "npm run build-frontend && npm run compile-backend && npx electron-builder build --win --dir"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "electron": "^30.0.9",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.sandydeveloper.dpos",
+    "productName": "DPOS",
+    "asar": false,
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "electron/**/*",
+      "frontend/out/**/*",
+      "dist/dpos_backend/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
